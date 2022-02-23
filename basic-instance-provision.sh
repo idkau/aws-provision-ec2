@@ -5,15 +5,15 @@
 #Provision a managed VPS ec2 instance and modify the disk size to 200G
 #Allocate and associate elastic IP with instance
 #
-#by Jason Jearl
-#Questions: jason.pearl@centralnic.com
+#by Jason
+#Questions: jason@someemail.com
 #
 CP_TEMPLATE="WHM-CL8-tpl"
 OS_TYPE="Cloudlinux"
 OS_VERSION="8"
 VOLUME_SIZE="200"
 #Change to the required SG for cpanel/cloudlinux managed vps
-SECURITY_GROUP_ID="sg-0aa7ab1929e1ec3ce"
+SECURITY_GROUP_ID="sg-0aaXXXXXXX"
 IS_MANAGED="True"
 isRunning="stopped"
 isAttached="no"
@@ -60,7 +60,7 @@ tagSpecs=$(echo "ResourceType=instance,Tags=[{Key=CustomerEmail,Value=${customer
 ey=Monitoring,Value=true},{Key=AccountName,Value=${greenCode}},{Key=Managed,Value=${IS_MANAGED}},{Key=Bandwidth,Value=${bandwidth}},{Key=OS,Value=${OS_TYPE}},{Key=OSVersion,Value=${OS_VERSION}}]")
 
 #create instance
-aws ec2 run-instances --image-id $imageId --count 1 --instance-type $instanceType --key-name tpp-vps --security-group-ids $SECURITY_GROUP_ID --subnet-id subnet-001034ecb79c5b868 --tag-specifications $tagSpecs
+aws ec2 run-instances --image-id $imageId --count 1 --instance-type $instanceType --key-name tpp-vps --security-group-ids $SECURITY_GROUP_ID --subnet-id subnet-001XXXXXXXXXX --tag-specifications $tagSpecs
 
 if [[ -z "$imageId" ]]; then
 
